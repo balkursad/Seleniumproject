@@ -12,13 +12,14 @@ public class T5_getTextGetAttribute {
 
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
+
         driver.manage().window().maximize();
 
         driver.get("https://practice.cydeo.com/registration_form");
 
         WebElement headText = driver.findElement(By.className("page-header"));
-        String expectedHeaderText = headText.getText();
-        String actualHeaderText = "Registration form";
+        String expectedHeaderText = "Registration form";
+        String actualHeaderText = headText.getText();
 
         if (actualHeaderText.equals(expectedHeaderText)){
             System.out.println("Header Text verification Pass");

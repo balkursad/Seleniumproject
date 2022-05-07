@@ -1,0 +1,33 @@
+package com.cydeo.tests.day3_cssSelector_xpath;
+
+import com.cydeo.utilities.WebDriverFactory;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class T1_locators_getText {
+
+    public static void main(String[] args) throws InterruptedException {
+       // WebDriverManager.chromedriver().setup();
+       // WebDriver driver = new ChromeDriver();
+        WebDriver driver = WebDriverFactory.getDriver("chrome");
+
+        driver.manage().window().maximize();
+        driver.get("https://login1.nextbasecrm.com/");
+
+        driver.findElement(By.className("login-inp")).sendKeys("incorrect");
+        driver.findElement(By.name("USER_PASSWORD")).sendKeys("incorrect");
+        driver.findElement(By.className("login-btn")).click();
+        if (driver.findElement(By.className("errortext")).equals("Incorrect login or password")){
+            System.out.println("Test passed");
+        }else{
+            System.out.println("Test failed");
+        }
+
+        Thread.sleep(3000);
+        driver.close();
+
+
+
+
+    }
+}
