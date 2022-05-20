@@ -74,29 +74,27 @@ public class T5_T6_T7_T8 {
         Assert.assertTrue(driver.getTitle().equals("Facebook - Giriş Yap veya Kaydol"));
     }
 
-   /*@Test (priority = 4)
+   @Test (priority = 4)
     public void TC8() throws InterruptedException {
         driver.get("https://practice.cydeo.com/dropdown");
-        Select multiSelectDropdown1 = new Select(driver.findElement(By.xpath("//select[@name=\"Languages\"]")));
-        Select multiSelectDropdown2 = new Select(driver.findElement(By.xpath("//select[@name=\"Languages\"]")));
+        Select multiSelectDropdown = new Select(driver.findElement(By.xpath("//select[@name=\"Languages\"]")));
+
 
         Thread.sleep(2000);
-        multiSelectDropdown1.selectByVisibleText("Java");
-        multiSelectDropdown2.selectByVisibleText("js");
-       // multiSelectDropdown.selectByVisibleText("JavaScript");
-        //multiSelectDropdown.selectByVisibleText("C#");
-       // multiSelectDropdown.selectByVisibleText("Python");
-        //multiSelectDropdown.selectByVisibleText("Ruby");
-      // multiSelectDropdown.selectByVisibleText("C");
+       for (WebElement each : multiSelectDropdown.getOptions()) {
+           System.out.println(each.getText());
+           each.click();
+       }
+       Thread.sleep(2000);
+       multiSelectDropdown.deselectAll();
 
-        //System.out.println("multiSelectDropdown.getAllSelectedOptions() = " + multiSelectDropdown.getAllSelectedOptions());
-        Thread.sleep(3000);
-       // multiSelectDropdown.deselectAll();
+       Thread.sleep(3000);
+
 
 
     }
 
-    */
+
     @AfterMethod
     public void tearDrop(){
         driver.close();

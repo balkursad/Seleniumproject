@@ -1,0 +1,43 @@
+package com.cydeo.utilities;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+import java.util.Set;
+
+public class BrowserUtils {
+
+ /*
+    This method accepts 3 arguments.
+    Arg1: webdriver
+    Arg2: expectedInUrl : for verify if the url contains given String.
+        - If condition matches, will break loop.
+    Arg3: expectedInTitle to be compared against actualTitle
+     */
+
+    public static void switchWindowAndVerify(WebDriver driver, String expectedInUrl, String expectedInTitle) {
+        Set<String> allWindowsHandles = driver.getWindowHandles();
+
+        for (String each : allWindowsHandles) {
+
+            driver.switchTo().window(each);
+
+            System.out.println("Current URL: " + driver.getCurrentUrl());
+
+            if (driver.getCurrentUrl().contains(expectedInUrl)) {
+                break;
+            }
+        }
+
+        String actualTitle = driver.getTitle();
+        Assert.assertTrue(actualTitle.contains(expectedInTitle));
+
+    }
+
+
+
+    public static void verifyTitle(WebDriver driver ,String expectedTitle) {
+
+        Assert.assertEquals(driver.getTitle(), expectedTitle);
+    }
+}
