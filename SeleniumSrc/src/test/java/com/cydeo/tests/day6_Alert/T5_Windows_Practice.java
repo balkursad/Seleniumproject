@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class T5_Windows_Practice {
@@ -39,6 +40,8 @@ public class T5_Windows_Practice {
         String afterClickTitle = driver.getTitle();
 
         System.out.println("afterClickTitle = " + afterClickTitle);
+
+        Set<String> allWindowHandles = driver.getWindowHandles();
 
         for (String each : driver.getWindowHandles()) {
             driver.switchTo().window(each);
